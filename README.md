@@ -7,55 +7,113 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Sobre a API Eótica
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A API Eótica se trata de um code challenge para vaga de Desenvolvedor Backend PHP na empresa Eótica. A ideia é implementar 
+um CRUD de produtos. Com base nisso, o desenvolvimento desse projeto será feito utilizando o framework Laravel para criar uma 
+API Rest. Logo a baixo a seguir é mostrado o passo a passo para execução do projeto. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requisitos para execução do projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **[Docker](https://www.docker.com/)**
+- **[Postman](https://www.postman.com/)**
+- **[PhpStorm](https://www.jetbrains.com/pt-br/phpstorm/)**
 
-## Learning Laravel
+## Baixando o Projeto API Eótica
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Clone o projeto em seu localhost
+`git clone https://github.com/pedroleandro/api_eotica.git`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Acesse a pasta do projeto
+`cd api_eotica/`
 
-## Laravel Sponsors
+# Projeto API Eótica no Docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Com DockerFile e docker-compose.yml
 
-### Premium Partners
+### Compilando a imagem do app
+`docker-compose build app`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+### Subindo os containers
+`docker-compose up -d`
 
-## Contributing
+### Copiando arquivo env
+`docker-compose exec app cp .env.example .env`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Baixando dependências
+`docker-compose exec app composer install`
 
-## Code of Conduct
+### Gerando chave com artisan
+`docker-compose exec app php artisan key:generate`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Executando migrations e seeders
+`docker-compose exec app php artisan migrate:fresh --seed`
 
-## Security Vulnerabilities
+### Domain
+`http://localhost:8010`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Routes
+Rotas
+- POST /products
+- GET /product/{id}
+- GET /products
+- PUT /product/{id}
+  DELETE /product/{id}
 
-## License
+A Collection da API com as rotas está na raiz do projeto para ser importada no Postman. 
+As rotas foram protegidas com autenticação JWT, para acessa-las é preciso realizar login
+e configurar o token gerado na variavel de ambiente token da collection. 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Utilize as seguintes credenciais de acesso em json para realizar login e logout:
+
+#### email: admin@example.com
+#### password: admin123
+
+- POST /login
+- POST /logout
+
+## Agora é só testar as rotas no Postman
+
+## Com Laradock
+
+### Baixando Laradock
+`git clone https://github.com/Laradock/laradock.git`
+
+### Acesse a pasta do Laradock
+`cd laradock/`
+
+### Copiando arquivo env
+`cp .env.example .env`
+
+### Subindo os containers
+`docker-compose up -d nginx mysql phpmyadmin`
+
+### Acesso pasta do projeto via docker
+`docker-compose exec --user=laradock workspace bash`
+
+### Copiando arquivo env
+`cp .env.example .env`
+
+### Baixando dependências
+`composer install`
+
+### Gerando chave com artisan
+`php artisan key:generate`
+
+### Domain
+`http://localhost:8010`
+
+### PhpMyAdmin
+`http://localhost:8081`
+
+#### Credenciais de acesso para o PhpMyAdmin
+#### Servidor: mysql
+#### Utilizador: admin
+#### Palavra-passe: admin
+
+#### Crie o banco de dados com o nome api_eotica com charset utf8mb4 e collation utf8mb4_unicode_ci
+
+### Executando migrations e seeders
+`php artisan migrate:fresh --seed`
+
+## Agora é só testar as rotas no Postman
