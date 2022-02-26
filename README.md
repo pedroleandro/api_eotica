@@ -37,20 +37,23 @@ API Rest. Logo a baixo a seguir é mostrado o passo a passo para execução do p
 ### Subindo os containers
 `docker-compose up -d`
 
+### Acessando container
+`docker exec -it api_eotica_app_1 bash`
+
 ### Copiando arquivo env
-`docker-compose exec app cp .env.example .env`
+`cp .env.example .env`
 
 ### Baixando dependências
-`docker-compose exec app composer install`
+`composer install`
 
 ### Gerando chave com artisan
-`docker-compose exec app php artisan key:generate`
+`php artisan key:generate`
 
 ### Executando migrations e seeders
-`docker-compose exec app php artisan migrate:fresh --seed`
+`php artisan migrate:fresh --seed`
 
 ### Domain
-`http://localhost:8010`
+`http://localhost:5000`
 
 ### Routes
 Rotas
@@ -71,49 +74,5 @@ Utilize as seguintes credenciais de acesso em json para realizar login e logout:
 
 - POST /login
 - POST /logout
-
-## Agora é só testar as rotas no Postman
-
-## Com Laradock
-
-### Baixando Laradock
-`git clone https://github.com/Laradock/laradock.git`
-
-### Acesse a pasta do Laradock
-`cd laradock/`
-
-### Copiando arquivo env
-`cp .env.example .env`
-
-### Subindo os containers
-`docker-compose up -d nginx mysql phpmyadmin`
-
-### Acesso pasta do projeto via docker
-`docker-compose exec --user=laradock workspace bash`
-
-### Copiando arquivo env
-`cp .env.example .env`
-
-### Baixando dependências
-`composer install`
-
-### Gerando chave com artisan
-`php artisan key:generate`
-
-### Domain
-`http://localhost:8010`
-
-### PhpMyAdmin
-`http://localhost:8081`
-
-#### Credenciais de acesso para o PhpMyAdmin
-#### Servidor: mysql
-#### Utilizador: admin
-#### Palavra-passe: admin
-
-#### Crie o banco de dados com o nome api_eotica com charset utf8mb4 e collation utf8mb4_unicode_ci
-
-### Executando migrations e seeders
-`php artisan migrate:fresh --seed`
 
 ## Agora é só testar as rotas no Postman
