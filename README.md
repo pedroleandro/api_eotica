@@ -52,7 +52,10 @@ API Rest. Logo a baixo a seguir é mostrado o passo a passo para execução do p
 ### Executando migrations e seeders
 `php artisan migrate:fresh --seed`
 
-### Domain
+### Caso seja necessário, execute:
+`chmod -R 777 /var/www/storage/*`
+
+### Acesse o domínio para testar o projeto
 `http://localhost:5000`
 
 ### Routes
@@ -65,7 +68,7 @@ Rotas
 
 A Collection da API com as rotas está na raiz do projeto para ser importada no Postman. 
 As rotas foram protegidas com autenticação JWT, para acessa-las é preciso realizar login
-e configurar o token gerado na variavel de ambiente token da collection. 
+e configurar o token gerado na variavel de ambiente token da collection. Na collection possui um prefixo api. 
 
 Utilize as seguintes credenciais de acesso em json para realizar login e logout:
 
