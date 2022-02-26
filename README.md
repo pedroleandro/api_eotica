@@ -76,3 +76,45 @@ Utilize as seguintes credenciais de acesso em json para realizar login e logout:
 - POST /logout
 
 ## Agora é só testar as rotas no Postman
+
+### Para testar a rota post/graphql
+`http://localhost:5000/graphql-playground`
+
+### Query para listar produtos
+```json
+{
+products{
+    id
+    name
+    description
+    brand
+    category
+    price
+    color
+    created_at
+    updated_at
+  }
+}
+```
+
+#Mutation para adicionar produto
+```json
+mutation {
+    createProduct(
+    name: "LEMA21 JULY"
+    description: "Óculos de Grau Lema21 July - Dourado - C1/54"
+    brand: "Lema21"
+    category: "Óculos de Grau"
+    price: "100"
+    color: "Dourado"
+    ) {
+    id
+    name
+    description
+    brand
+    category
+    price
+    color
+    }
+}
+```
