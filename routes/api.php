@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(["namespace" => "Api", "as" => "api."], function () {
 
-    Route::apiResource("/product", "ProductController");
+    Route::post('login', 'AuthController@login')->name('login');
+
+    Route::group(['middleware' => ['apiJwt']], function(){
+
+        Route::post('logout', 'AuthController@logout')->name('logout');
+        Route::apiResource("/product", "ProductController");
+
+    });
 
 });
