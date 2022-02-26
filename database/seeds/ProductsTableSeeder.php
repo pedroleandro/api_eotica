@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
             "description" => "Óculos de Sol Italia Independent 0090 - Cinza Estampado Aveludado - Espelhado Cinza - 000/49",
             "brand" => "Italia Independent",
             "category" => "Óculos de Sol",
-            "price" => "220.50",
+            "price" => 220.4,
             "color" => "Cinza"
         ]);
 
@@ -26,7 +26,7 @@ class ProductsTableSeeder extends Seeder
             "description" => "Óculos de Sol Italia Independent 0092C - Preto - 009/60",
             "brand" => "Italia Independent",
             "category" => "Óculos de Sol",
-            "price" => "330.60",
+            "price" => 330.6,
             "color" => "Preto"
         ]);
 
@@ -35,7 +35,7 @@ class ProductsTableSeeder extends Seeder
             "description" => "Óculos de Sol Italia Independent 0900T - Preto Estampado - T/50",
             "brand" => "Italia Independent",
             "category" => "Óculos de Sol",
-            "price" => "238.5",
+            "price" => 268.5,
             "color" => "Preto"
         ]);
 
@@ -44,7 +44,7 @@ class ProductsTableSeeder extends Seeder
             "description" => "Óculos de Grau Vogue VO5309L - Vinho Transparente - 2798/54",
             "brand" => "Vogue",
             "category" => "Óculos de Grau",
-            "price" => "162",
+            "price" => 162,
             "color" => "Vinho"
         ]);
     }
