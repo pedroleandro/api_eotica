@@ -21,7 +21,7 @@ services:
     container_name: eotica-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: eotica
+      MYSQL_DATABASE: api_eotica
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_PASSWORD: root
       MYSQL_USER: root
